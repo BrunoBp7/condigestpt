@@ -32,33 +32,39 @@
 	});
 </script>
 </head>
-<body>
-	<div class="bs-example">
-		<nav role="navigation" class="navbar navbar-default">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" data-target="#navbarCollapse"
-					data-toggle="collapse" class="navbar-toggle">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a href="main" class="navbar-brand">CondiGest</a>
-			</div>
-			<!-- Collection of nav links and other content for toggling -->
-			<div id="navbarCollapse" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="main">Serviço</a></li>
-					<li><a href="main">Informações</a></li>
-					<li><a href="main">Contactos</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a data-html="true" href="#" data-toggle="popover" data-content="Here">Login</a></li>
-				</ul>
-			</div>
-		</nav>
+<body>	
+<div class="container">
+	<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header ">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">CondiGest</a>
+        </div>
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+				<li><a href="main">Serviço</a></li>
+				<li><a href="main">Informações</a></li>
+				<li><a href="main">Contactos</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+				<li><a data-html="true" href="#" data-toggle="popover" data-content="Here">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+	<div class="jumbotron" style="margin-top: 80px">
+		<img src="images/Header.jpg" class="img-thumbnail" alt="CondiGest">
 	</div>
+
 
 	<div id="myModal" class="modal fade">
 		<div class="modal-dialog">
@@ -96,5 +102,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
