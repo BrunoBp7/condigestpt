@@ -65,8 +65,11 @@
 		<img src="images/Header.jpg" class="img-thumbnail" alt="CondiGest">
 	</div>
 
+			<div class="jumbotron" style="width: 25%; height: 300px; float: left;"></div>
+			<div class="jumbotron" style="width: 70%; height: 300px; float: right;"></div>
 
-	<div id="myModal" class="modal fade">
+
+		<div id="myModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
