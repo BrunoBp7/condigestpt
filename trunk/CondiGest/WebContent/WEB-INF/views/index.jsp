@@ -32,7 +32,7 @@
 	});
 </script>
 </head>
-<body>	
+<body style="background-color: grey">	
 <div class="container">
 	<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -65,9 +65,10 @@
 		<img src="images/Header.jpg" class="img-thumbnail" alt="CondiGest">
 	</div>
 
+		<div>
 			<div class="jumbotron" style="width: 25%; height: 300px; float: left;"></div>
 			<div class="jumbotron" style="width: 70%; height: 300px; float: right;"></div>
-
+		</div>
 
 		<div id="myModal" class="modal fade">
 		<div class="modal-dialog">
@@ -105,6 +106,24 @@
 			</div>
 		</div>
 	</div>
-</div>
+	<div class="jumbotron" style="float: left; width: 100%">
+	</div>
+
+		<nav role="navigation" class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="#" class="navbar-brand">Brand</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+
 </body>
 </html>
