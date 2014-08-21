@@ -25,7 +25,7 @@
 		<div class="navbar-header" style="width: 25%">
 			<button type="button" data-target="#navbarCollapse"	data-toggle="collapse" class="navbar-toggle">				
 			</button>
-			<img alt="Home" src="images/condigest.png" style="width: 65%">
+			<img alt="Home" src="images/condigest.png" style="width: 45%; height: 5%">
 		</div>
 		<!-- Collection of nav links and other content for toggling -->
 		<div id="navbarCollapse" class="collapse navbar-collapse">

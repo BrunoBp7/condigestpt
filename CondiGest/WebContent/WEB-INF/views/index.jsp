@@ -20,7 +20,7 @@
 
 <style type="text/css">
 .jumbotron {
-	background: rgba(255, 255, 255, 0.4);
+	background: rgba(255, 255, 255, 0.1);
 }
 .list-group{
 margin: 0px;
@@ -30,6 +30,17 @@ padding: 5px;
 }
 .list-group-item{
 padding: 0px;
+}
+.list-group ul{
+list-style-type: none;
+margin: 0px;
+-webkit-padding-start: 0px;
+}
+.list-group li{
+padding-left: 5px;
+border: 0px;
+color: white;
+background-color: transparent;
 }
 </style>
 </head>
@@ -51,10 +62,10 @@ padding: 0px;
 						<p class="list-group-item-heading">Area de Cliente</p>
 					</a>
 					<ul>
-						<li>We provide 24*7 support.</li>
-						<li>We provide 24*7 support.</li>
-						<li>We provide 24*7 support.</li>
-						<li>We provide 24*7 support.</li>
+						<li class="list-group-item">We provide 24*7 support.</li>
+						<li class="list-group-item">We provide 24*7 support.</li>
+						<li class="list-group-item">We provide 24*7 support.</li>
+						<li class="list-group-item">We provide 24*7 support.</li>
 					</ul>
 				</div>
 			</div>
