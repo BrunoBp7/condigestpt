@@ -45,7 +45,7 @@ background-color: transparent;
 </style>
 </head>
 
-<body style="background-color: #34495e">
+<body style="background-color: #C3B18A">
 	<div class="container" style="width: 65%; height: 100%">
 
 		<%@include file="/WEB-INF/includes/navbar.jsp"%>
