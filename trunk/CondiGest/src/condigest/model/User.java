@@ -1,12 +1,10 @@
 package condigest.model;
 
-import java.util.GregorianCalendar;
+import java.sql.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -37,23 +35,27 @@ public class User {
     private Set<Anomalies> listOfAnomalie = new HashSet<Anomalies>();
 
     @ManyToOne
-    @JoinColumn(name = "id_meeting", nullable = false)
+    @JoinColumn(name = "id_meeting", nullable = true)
     private Meetings userPresent;
 
-    @Column
-    @ElementCollection(targetClass = String.class)
-    private List<String> userContacts;
+    @Column(nullable = false)
+    private String mobilePhone;
+    
+    @Column(nullable = true)
+    private String phone;
 
-    @Column
-    @ElementCollection(targetClass = String.class)
-    private List<String> userEmails;
+    @Column(nullable = false)
+    private String primaryEmail;
+    
+    @Column(nullable = true)
+    private String alternativeEmail;
     
     @Column(columnDefinition = "BIT", nullable = false)
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean typeOfUser;
 
     @Column(nullable = false)
-    private GregorianCalendar birthday;
+    private Date birthday;
     
     @Column(nullable = false)
     private String name;
@@ -64,25 +66,26 @@ public class User {
     @Column(nullable = false, length = 25)
     private String userName;
     
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 50)
     private String password;
 
     public User() {
         super();
     }
 
-    public User(Set<Address> listOfAddress, Set<Fraction> listOfFractions,
-            List<String> userContacts, List<String> userEmails, GregorianCalendar birthday, String name,
-            String taxIdentificationNumber, boolean typeOfUser, String userName, String password) {
+    public User(String mobilePhone, String phone, String primaryEmail,
+            String alternativeEmail, boolean typeOfUser,
+            Date birthday, String name,
+            String taxIdentificationNumber, String userName, String password) {
         super();
-        this.listOfAddress = listOfAddress;
-        this.listOfFractions = listOfFractions;
-        this.userContacts = userContacts;
-        this.userEmails = userEmails;
+        this.mobilePhone = mobilePhone;
+        this.phone = phone;
+        this.primaryEmail = primaryEmail;
+        this.alternativeEmail = alternativeEmail;
+        this.typeOfUser = typeOfUser;
         this.birthday = birthday;
         this.name = name;
         this.taxIdentificationNumber = taxIdentificationNumber;
-        this.typeOfUser = typeOfUser;
         this.userName = userName;
         this.password = password;
     }
@@ -119,27 +122,43 @@ public class User {
         this.userPresent = userPresent;
     }
 
-    public List<String> getUserContacts() {
-        return userContacts;
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
-    public void setUserContacts(List<String> userContacts) {
-        this.userContacts = userContacts;
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
     }
 
-    public List<String> getUserEmails() {
-        return userEmails;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUserEmails(List<String> userEmails) {
-        this.userEmails = userEmails;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public GregorianCalendar getBirthday() {
+    public String getPrimaryEmail() {
+        return primaryEmail;
+    }
+
+    public void setPrimaryEmail(String primaryEmail) {
+        this.primaryEmail = primaryEmail;
+    }
+
+    public String getAlternativeEmail() {
+        return alternativeEmail;
+    }
+
+    public void setAlternativeEmail(String alternativeEmail) {
+        this.alternativeEmail = alternativeEmail;
+    }
+
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(GregorianCalendar birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
