@@ -3,6 +3,7 @@ package condigest.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,35 @@ public class UserRepository {
         return (User) em
                 .createQuery("SELECT u FROM USER u WHERE u.id_user = :id")
                 .setParameter("id", id).getSingleResult();
+    }
+    
+    public User findUserByNameOrEmail(String nameOrEmail) {
+        User user = null;
+        try {
+            return user = (User) em
+                    .createQuery("SELECT u FROM User u WHERE (u.userName = :nameOrEmail) or (u.primaryEmail = :nameOrEmail)")
+                    .setParameter("nameOrEmail", nameOrEmail).getSingleResult();
+        } catch (Exception e) {
+            System.out.println("não encontrado user");
+            return user;
+        }
+    }
+    
+    public boolean isTheRightPassword(long id, String md5Password) {        
+        User user = null;
+        try {
+            user = (User) em.createQuery("SELECT u FROM User u WHERE u.id_user = :id").setParameter("id", id).getSingleResult();
+        } catch (Exception e) {
+            System.out.println("não encontrado user");
+            return false;
+        }
+
+        if (user.getPassword().equals(md5Password)) {
+            return true;
+        } else {
+            System.out.println("pass doenst match");
+            return false;
+        }
     }
     
     @SuppressWarnings("unchecked")

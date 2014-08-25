@@ -1,11 +1,9 @@
 package condigest.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,16 +26,20 @@ public class Company {
     private Set<Invoice> listOfInvoices = new HashSet<Invoice>();
 
     @Column(nullable = false)
-    @ElementCollection(targetClass = String.class)
-    private List<String> companyContacts;
+    private String primaryContact;
 
     @Column(nullable = false)
-    @ElementCollection(targetClass = String.class)
-    private List<String> companyEmails;
+    private String alternativeContact;
+
+    @Column(nullable = false)
+    private String primaryEmail;
+
+    @Column(nullable = false)
+    private String alternativeEmail;
 
     @Column(nullable = false, length = 100)
     private String companyName;
-    
+
     @Column(nullable = false, length = 25)
     private String companyIdentificationNumber;
 
@@ -45,13 +47,16 @@ public class Company {
         super();
     }
 
-    public Company(Set<Address> listOfAddress, List<String> companyContacts,
-            List<String> companyEmails, String companyName,
+    public Company(Set<Address> listOfAddress, String primaryContact,
+            String alternativeContact, String primaryEmail,
+            String alternativeEmail, String companyName,
             String companyIdentificationNumber) {
         super();
         this.listOfAddress = listOfAddress;
-        this.companyContacts = companyContacts;
-        this.companyEmails = companyEmails;
+        this.primaryContact = primaryContact;
+        this.alternativeContact = alternativeContact;
+        this.primaryEmail = primaryEmail;
+        this.alternativeEmail = alternativeEmail;
         this.companyName = companyName;
         this.companyIdentificationNumber = companyIdentificationNumber;
     }
@@ -80,20 +85,36 @@ public class Company {
         this.listOfInvoices = listOfInvoices;
     }
 
-    public List<String> getCompanyContacts() {
-        return companyContacts;
+    public String getPrimaryContact() {
+        return primaryContact;
     }
 
-    public void setCompanyContacts(List<String> companyContacts) {
-        this.companyContacts = companyContacts;
+    public void setPrimaryContact(String primaryContact) {
+        this.primaryContact = primaryContact;
     }
 
-    public List<String> getCompanyEmails() {
-        return companyEmails;
+    public String getAlternativeContact() {
+        return alternativeContact;
     }
 
-    public void setCompanyEmails(List<String> companyEmails) {
-        this.companyEmails = companyEmails;
+    public void setAlternativeContact(String alternativeContact) {
+        this.alternativeContact = alternativeContact;
+    }
+
+    public String getPrimaryEmail() {
+        return primaryEmail;
+    }
+
+    public void setPrimaryEmail(String primaryEmail) {
+        this.primaryEmail = primaryEmail;
+    }
+
+    public String getAlternativeEmail() {
+        return alternativeEmail;
+    }
+
+    public void setAlternativeEmail(String alternativeEmail) {
+        this.alternativeEmail = alternativeEmail;
     }
 
     public String getCompanyName() {
