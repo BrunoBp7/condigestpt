@@ -44,25 +44,25 @@
 	</bean>
 
 
-	<bean id="ForumBean" class="spring.ForumDaoImpl"></bean>
+	<bean id="ForumBean" class="spring.dao.ForumDaoImpl"></bean>
 	<bean id="forumManager" class="spring.manager.ForumManager">
 		<property name="dao" ref="ForumBean" />
 	</bean>
 
 
-	<bean id="postBean" class="spring.PostDaoImpl"></bean>
+	<bean id="postBean" class="spring.dao.PostDaoImpl"></bean>
 	<bean id="postManager" class="spring.manager.PostManager">
 		<property name="dao" ref="postBean" />
 	</bean>
 
 
-	<bean id="topicBean" class="spring.TopicDaoImpl"></bean>
+	<bean id="topicBean" class="spring.dao.TopicDaoImpl"></bean>
 	<bean id="topicManager" class="spring.manager.TopicManager">
 		<property name="dao" ref="topicBean" />
 	</bean>
 
 
-	<bean id="userBean" class="spring.UserDaoImpl"></bean>
+	<bean id="userBean" class="spring.dao.UserDaoImpl"></bean>
 	<bean id="userManager" class="spring.manager.UserManager">
 		<property name="dao" ref="userBean" />
 	</bean>
