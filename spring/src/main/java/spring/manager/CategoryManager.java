@@ -2,14 +2,14 @@ package spring.manager;
 
 import java.util.List;
 
-import spring.dao.CategoryDao;
+import spring.dao.CategoryDAO;
 import spring.model.Category;
 
 public class CategoryManager {
 
-    private CategoryDao dao;
+    private CategoryDAO dao;
 
-    public void setDao(CategoryDao dao) {
+    public void setDao(CategoryDAO dao) {
         this.dao = dao;
     }
     

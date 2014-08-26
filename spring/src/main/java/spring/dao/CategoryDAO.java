@@ -4,7 +4,7 @@ import java.util.List;
 
 import spring.model.Category;
 
-public interface CategoryDao extends GenericDAO<Category> {
+public interface CategoryDAO extends GenericDAO<Category> {
     
     public List<Category> findAll();
 

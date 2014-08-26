@@ -4,7 +4,7 @@ import java.util.List;
 
 import spring.model.Category;
 
-public class CategoryDaoImpl extends GenericDaoImpl<Category> implements CategoryDao {
+public class CategoryDaoImpl extends GenericDaoImpl<Category> implements CategoryDAO {
 
     public CategoryDaoImpl() {
         setEntityClass(Category.class);
