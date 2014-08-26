@@ -1,0 +1,71 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+             http://www.springframework.org/schema/context
+             http://www.springframework.org/schema/context/spring-context.xsd
+             http://www.springframework.org/schema/tx
+             http://www.springframework.org/schema/tx/spring-tx.xsd ">
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/spring2" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="persistenceXmlLocation" value="/WEB-INF/persistence.xml" />
+	</bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" value="false" />
+		<property name="generateDdl" value="true" />
+		<property name="database" value="MYSQL" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<context:component-scan base-package="spring" />
+
+
+	<bean id="categoryBean" class="spring.dao.CategoryDaoImpl"></bean>
+	<bean id="categoryManager" class="spring.manager.CategoryManager">
+		<property name="dao" ref="categoryBean" />
+	</bean>
+
+
+	<bean id="ForumBean" class="spring.ForumDaoImpl"></bean>
+	<bean id="forumManager" class="spring.manager.ForumManager">
+		<property name="dao" ref="ForumBean" />
+	</bean>
+
+
+	<bean id="postBean" class="spring.PostDaoImpl"></bean>
+	<bean id="postManager" class="spring.manager.PostManager">
+		<property name="dao" ref="postBean" />
+	</bean>
+
+
+	<bean id="topicBean" class="spring.TopicDaoImpl"></bean>
+	<bean id="topicManager" class="spring.manager.TopicManager">
+		<property name="dao" ref="topicBean" />
+	</bean>
+
+
+	<bean id="userBean" class="spring.UserDaoImpl"></bean>
+	<bean id="userManager" class="spring.manager.UserManager">
+		<property name="dao" ref="userBean" />
+	</bean>
+
+
+</beans>
