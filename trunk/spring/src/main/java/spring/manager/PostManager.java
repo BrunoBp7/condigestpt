@@ -1,8 +1,12 @@
 package spring.manager;
 
+import java.sql.Date;
 import java.util.List;
 
 import spring.dao.PostDAO;
+import spring.model.Post;
+import spring.model.Topic;
+import spring.model.User;
 
 public class PostManager {
     
@@ -12,27 +16,27 @@ public class PostManager {
         this.dao = dao;
     }
     
-    public List<Forum> findAll() {
-        List<Forum> lf = dao.findAll();
+    public List<Post> findAll() {
+        List<Post> lp = dao.findAll();
         
-        for (Forum f : lf) {
-            System.out.println(f.getName());
+        for (Post p : lp) {
+            System.out.println(p.getTitle());
         }
-        return lf;
+        return lp;
     }
     
-    public Forum find(long id) {
-        Forum f = dao.find(id);
-        return f;
+    public Post find(long id) {
+        Post p = dao.find(id);
+        return p;
     }
     
-    public void createCategory(Category categoryForum, String name, String description) {
-        Forum f = new Forum(categoryForum, name, description);
-        dao.save(f);
+    public void createCategory(Topic postOfTopic, User postOfUser, Date creationTime, String title, String message) {
+        Post p = new Post(postOfTopic, postOfUser, creationTime, title, message); 
+        dao.save(p);
     }
     
-    public void remove(Forum f){
-        dao.remove(f);
+    public void remove(Post p){
+        dao.remove(p);
     }
     
     public void remove(long id){
