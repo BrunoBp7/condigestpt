@@ -1,6 +1,9 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@page session="true"%>
+
 
 
 <html>
@@ -53,7 +56,7 @@
 }
 
 .firstContainer {
-	background: url('images/background5.jpg');
+/* 	background: url('images/background5.jpg'); */
 	background-position: center;
 }
 
@@ -87,6 +90,7 @@
 </head>
 
 <body>
+
 	<div class="firstContainer">
 		<div class="container" style="width: 65%; height: 100%">
 
@@ -125,6 +129,17 @@
 			</div>
 		</div>
 	</div>
+	
+	<div>Bruno 
+<%
+session = request.getSession();
+// 	session.setAttribute("user", User);
+	out.println(session.getId());
+
+%>
+</div>
+	
+	
 		<div id="myModal" class="modal fade">
 			<div class="modal-dialog" style="width: 350px;">
 				<div class="modal-content"
