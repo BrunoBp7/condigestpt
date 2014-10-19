@@ -1,11 +1,14 @@
 package condigest.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
+import condigest.model.User;
 
 @Controller
 public class MainController {
@@ -16,7 +19,9 @@ public class MainController {
     }
 
     @RequestMapping("/main")
-    public String showMainPage() {
+    public String showMainPage(HttpServletRequest request) {
+//        User user = request.getSession().setAttribute("user", );
+
         return "index";
     }
     
