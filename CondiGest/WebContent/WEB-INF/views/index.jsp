@@ -1,8 +1,7 @@
-<%@page import="java.io.PrintWriter"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
-<%@page session="true"%>
+<%@ page session="true"%>
 
 
 
@@ -19,10 +18,35 @@
 <script type="text/javascript" src="resources/js/jquery.bootstrap-growl.js"></script>
 
 
-<!-- <link rel="stylesheet" href="resources/css/bootstrap.min.css"> -->
-<!-- <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"> -->
-<!-- <script type="text/javascript" src="resources/js/jquery-1.3.2.js"></script> -->
-<!-- <script type="text/javascript" src="resources/js/bootstrap.min.js"></script> -->
+<!-- Bootstrap Core CSS -->
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link href="resources/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+<!-- Timeline CSS -->
+<link href="resources/css/plugins/timeline.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="resources/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Morris Charts CSS -->
+<link href="resources/css/plugins/morris.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="resources/fonts/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="resources/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="resources/js/plugins/morris/raphael.min.js"></script>
+<script src="resources/js/plugins/morris/morris.min.js"></script>
+<script src="resources/js/plugins/morris/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="resources/js/sb-admin-2.js"></script>
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -35,17 +59,13 @@
 		$("#myModal").on('hide.bs.modal', function() {
 			$(".firstContainer").removeClass('blur');
 		});
-// 		$(".growl").click("I'll use Bootstrap Danger Alert Styling!", {
-// 			type: "danger"
-// 		});
+		// 		$(".growl").click("I'll use Bootstrap Danger Alert Styling!", {
+		// 			type: "danger"
+		// 		});
 	});
 </script>
 
 <style type="text/css">
-
-.jumbotron {
-	background: rgba(255, 255, 255, 0.1);
-}
 
 .blur {
 	-webkit-filter: blur(5px);
@@ -54,93 +74,23 @@
 	-ms-filter: blur(5px);
 	filter: blur(5px);
 }
-
-.firstContainer {
-/* 	background: url('images/background5.jpg'); */
-	background-position: center;
-}
-
-.jumbotron p {
-	font-size: 21px;
-	margin: 0px;
-}
-
-.list-group {
-	margin: 0px;
-}
-
-.list-group-item {
-	padding: 0px 0px 0px 5px;
-}
-
-.list-group ul {
-	list-style-type: none;
-	margin: 0px;
-	-webkit-padding-start: 0px;
-}
-
-.list-group li {
-	padding-left: 5px;
-	border: 0px;
-	color: white;
-	background-color: transparent;
-}
 </style>
 
 </head>
 
 <body>
 
-	<div class="firstContainer">
-		<div class="container" style="width: 65%; height: 100%">
+	<div class="container">
 
-			<%@include file="/WEB-INF/includes/navbar.jsp"%>
+			<%@include file="/WEB-INF/includes/navigation.jsp"%>
 
-			<div class="jumbotron" style="margin-top: 100px; padding: 5px; height: 20%">
-
-				<%@include file="/WEB-INF/includes/mycarousel.jsp"%>
-
-			</div>
-			<div class="mainContainer">
-				<div class="jumbotron" style="width: 25%; height: auto; float: left; padding: 0px;">
-					<div class="list-group">
-						<div class="list-group-item active">Area de Cliente</div>
-						<ul>
-							<li class="list-group-item">We provide 24*7 support.</li>
-							<li class="list-group-item">We provide 24*7 support.</li>
-							<li class="list-group-item">We provide 24*7 support.</li>
-							<li class="list-group-item">We provide 24*7 support.</li>
-						</ul>
-					</div>
-				</div>
-				<div class="jumbotron" style="width: 70%; height: 54%; float: right;"></div>
-				<div class="jumbotron" style="width: 25%; height: auto; float: left; padding: 0px;">
-					<div class="list-group">
-						<div id="ulHeader" class="list-group-item active">Area do
-							Administrador</div>
-						<ul>
-							<li class="list-group-item">We provide 24*7 support.</li>
-							<li class="list-group-item">We provide 24*7 support.</li>
-							<li class="list-group-item">We provide 24*7 support.</li>
-							<li class="list-group-item">We provide 24*7 support.</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+			
 	</div>
-	
-	<div>Bruno 
-<%
-session = request.getSession();
-// 	session.setAttribute("user", User);
-	out.println(session.getId());
 
-%>
-</div>
 	
-	
-		<div id="myModal" class="modal fade">
+
+
+	<div id="myModal" class="modal fade">
 			<div class="modal-dialog" style="width: 350px;">
 				<div class="modal-content"
 					style="background-color: rgba(255, 255, 255, 0.6); border-radius: 20px;">
