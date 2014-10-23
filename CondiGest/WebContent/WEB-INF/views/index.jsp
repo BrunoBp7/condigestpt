@@ -10,58 +10,35 @@
 <title>CondiGest, gestão de condomínios</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
+								<!-- Css -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link href="resources/css/sb-admin-2.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+								<!-- JS Files -->
 <script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
 <script type="text/javascript" src="resources/js/jquery.bootstrap-growl.js"></script>
-
-
-<!-- Bootstrap Core CSS -->
-<link href="resources/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link href="resources/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-<!-- Timeline CSS -->
-<link href="resources/css/plugins/timeline.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="resources/css/sb-admin-2.css" rel="stylesheet">
-
-<!-- Morris Charts CSS -->
-<link href="resources/css/plugins/morris.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link href="resources/fonts/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="resources/js/plugins/metisMenu/metisMenu.min.js"></script>
-
-<!-- Morris Charts JavaScript -->
-<script src="resources/js/plugins/morris/raphael.min.js"></script>
-<script src="resources/js/plugins/morris/morris.min.js"></script>
-<script src="resources/js/plugins/morris/morris-data.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="resources/js/sb-admin-2.js"></script>
-
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".navbar-right .loginClass").click(function() {
-			$("#myModal").modal('show');
+		$("#loginButton").click(function() {
+			$("#loginModal").modal('show');
 		});
-		$("#myModal").on('show.bs.modal', function() {
-			$(".firstContainer").addClass('blur');
+		$("#loginModal").on('show.bs.modal', function() {
+			$(".bigContainer").addClass('blur');
 		});
-		$("#myModal").on('hide.bs.modal', function() {
-			$(".firstContainer").removeClass('blur');
+		$("#loginModal").on('hide.bs.modal', function() {
+			$(".bigContainer").removeClass('blur');
 		});
-		// 		$(".growl").click("I'll use Bootstrap Danger Alert Styling!", {
-		// 			type: "danger"
-		// 		});
+		
+		$(function() {
+			$('#birthdayfield').datepicker();
+		    $( "#birthdayfield" ).datepicker( "option", "dateFormat", "yy-mm-dd");
+		});
 	});
 </script>
 
@@ -80,17 +57,33 @@
 
 <body>
 
-	<div class="container">
-
-			<%@include file="/WEB-INF/includes/navigation.jsp"%>
-
-			
+	<div class="bigContainer" style="padding: 0px; margin: 0px; width: 100%; overflow-x: hidden;">
+		<div class="header">
+			<div class="row">
+				<div class="col-md-12">
+					<%@include file="/WEB-INF/includes/navigation.jsp"%>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="row" style="width: 100%">
+				<div class="col-md-3">
+					<%@include file="/WEB-INF/includes/sidemenu.jsp"%>
+				</div>
+				<div class="col-md-8" style=" padding-left: 0px; padding-right: 0px; padding-top: 15px; ">
+					<%@include file="/WEB-INF/includes/userregisterform.jsp"%>
+				</div>
+				<div class="col-md-1">
+				
+				</div>
+			</div>
+		</div>
 	</div>
 
-	
 
 
-	<div id="myModal" class="modal fade">
+
+	<div id="loginModal" class="modal fade">
 			<div class="modal-dialog" style="width: 350px;">
 				<div class="modal-content"
 					style="background-color: rgba(255, 255, 255, 0.6); border-radius: 20px;">
@@ -121,9 +114,7 @@
 							</div>
 							<div class="form-group">
 								<div class="col-xs-10">
-									<button type="submit" class="btn btn-primary">Login</button>
-									<button type="button" class="growl">test</button>
-									
+									<button type="submit" class="btn btn-primary">Login</button>									
 								</div>
 							</div>
 						</form>
