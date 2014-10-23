@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
@@ -26,5 +27,13 @@ public class MainController {
     @RequestMapping("/login")
     public String showLoginPage() {
         return "login";
+    }
+    
+    @RequestMapping("/saveUser")
+    public ModelAndView saveUser(){
+    	ModelAndView mav = new ModelAndView("");
+    	
+    	
+    	retur mav;
     }
 }
