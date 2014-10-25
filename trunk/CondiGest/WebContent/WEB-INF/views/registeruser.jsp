@@ -40,11 +40,14 @@
 		</div>
 		<div class="content">
 			<div class="row" style="width: 100%">
-<!-- 				<div class="col-md-3"> -->
-<%-- 					<%@include file="/WEB-INF/includes/sidemenu.jsp"%> --%>
-<!-- 				</div> -->
-				<div class="col-md-12" style=" padding-left: 0px; padding-right: 0px; padding-top: 15px; ">
-					<%@include file="/WEB-INF/includes/welcomepage.jsp"%>
+				<div class="col-md-3">
+					<%@include file="/WEB-INF/includes/sidemenu.jsp"%>
+				</div>
+				<div class="col-md-8" style=" padding-left: 0px; padding-right: 0px; padding-top: 15px; ">
+					<%@include file="/WEB-INF/includes/userregisterform.jsp"%>
+				</div>
+				<div class="col-md-1">
+				
 				</div>
 			</div>
 		</div>

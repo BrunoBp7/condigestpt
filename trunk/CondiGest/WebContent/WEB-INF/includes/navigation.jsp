@@ -11,6 +11,15 @@
 		<span id="logoid" class="navbar-brand">Condigest v1.0</span>
 	</div>
 	<!-- /.navbar-header -->
+	<form class="nav navbar-top-links navbar-right" role="search" style="width: 20%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px;">
+       <div class="input-group">
+           <input type="text" class="form-control" placeholder="Pesquisar" style="border-radius: 20px;">
+           <div class="input-group-btn">
+               <button class="btn btn-default" type="submit" style="margin-left: 5px; border-radius: 10px;"><i class="glyphicon glyphicon-search"></i></button>
+           </div>
+       </div>
+   	</form>
+
 
 	<ul class="nav navbar-top-links navbar-right">
 		<li class="dropdown">
