@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div class="formcontent">
     <div class="row">
-        <form action="saveUser" method="get" role="form">
+        <form action="saveUser" method="post">
             <div class="col-lg-12">
 				<div class="well well-sm"><span class="fa fa-tag" style="color: #428bca"></span><strong> Preenchimento Obrigatório</strong></div>
 				<div class="row">
@@ -11,17 +11,19 @@
                     <label for="InputName">Nome Completo</label>
                     <div class="input-group">
 		                <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon glyphicon-user"></span></span>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Nome" required>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Nome" >
                         <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
                     </div>
                 </div>
                 </div>
                 <div class="col-lg-3">
-                  <div class="form-group">
+                  <div class="form-group" style="float: right;">
                     <label for="InputUserType">Tipo de Utilizador</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="userType" id="userType" placeholder="Nome" required>
-                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
+								<select class="form-control" name="userType">
+									<option value="false">Utilizidor normal</option>
+									<option value="true">Administrador</option>
+								</select>
                     </div>
                 </div>
                 </div>
@@ -32,7 +34,7 @@
 		                    <label for="InputEmail">Email</label>
 		                    <div class="input-group">
 		                  		<span class="input-group-addon" title="Preenchimento Obrigatório">@</span>
-		                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+		                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" >
 		                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
 		                    </div>
 		                </div>
@@ -42,8 +44,8 @@
 		                    <label for="InputAlternativeEmail">Email Alternativo</label>
 		                    <div class="input-group">
 		                  		<span class="input-group-addon" title="Preenchimento Obrigatório">@</span>
-		                        <input type="email" class="form-control" id="alternativeEmail" name="alternativeEmail" placeholder="Email Alternativo" required>
-		                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon"></span></span>
+		                        <input type="email" class="form-control" id="alternativeEmail" name="alternativeEmail" placeholder="Email Alternativo">
+		                        <span class="input-group-addon"><span class="glyphicon"></span></span>
 		                    </div>
 		                </div>
 		           </div>
@@ -54,7 +56,7 @@
 		                    <label for="InputContact">Contacto</label>
 		                    <div class="input-group">
 		                		<span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon glyphicon-phone"></span></span>
-		                        <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Contacto" required>
+		                        <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Contacto" >
 		                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
 		                    </div>
 		                </div>
@@ -64,8 +66,8 @@
 		                    <label for="InputAlternativeTelephone">Contacto Alternativo</label>
 		                    <div class="input-group">
 		                		<span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon glyphicon-earphone"></span></span>
-		                        <input type="text" class="form-control" id="alternativeTelephone" name="alternativeTelephone" placeholder="Contacto Alternativo" required/>
-		                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon"></span></span>
+		                        <input type="text" class="form-control" id="alternativeTelephone" name="alternativeTelephone" placeholder="Contacto Alternativo"/>
+		                        <span class="input-group-addon"><span class="glyphicon"></span></span>
 		                    </div>
 		                </div>
 		           </div>
@@ -76,7 +78,7 @@
 		                    <label for="InputbirthdayField">Data de Nascimento</label>
 		                    <div class="input-group date">
 		                		<span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon glyphicon-calendar"></span></span>
-		                		<input type='text' class="form-control" id="birthdayField" name="birthdayField" placeholder="Data de Nascimento" required/>
+		                		<input type='text' class="form-control" id="birthdayField" name="birthdayField" placeholder="Data de Nascimento" />
 		                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
 		                    </div>
 		                </div>
@@ -86,7 +88,7 @@
 		                    <label for="InputIdentificationNumber">Numero de identificação</label>
 		                    <div class="input-group">
 		                		<span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon glyphicon-calendar"></span></span>
-	                        <input type="text" class="form-control" id="nationalIdNumber" name="nationalIdNumber" placeholder="Numero de identificação" required>
+	                        <input type="text" class="form-control" id="nationalIdNumber" name="nationalIdNumber" placeholder="Numero de identificação" >
 	                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
 		                    </div>
 		                </div>
@@ -98,7 +100,7 @@
 		                    <label for="InputUserName">Nome de utilizador</label>
 		                    <div class="input-group">
 		                		<span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-users"></span></span>
-		                        <input type="text" class="form-control" id="userName" name="userName" placeholder="Nome de utilizador" required>
+		                        <input type="text" class="form-control" id="userName" name="userName" placeholder="Nome de utilizador" >
 		                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
 		                    </div>
 		                </div>
@@ -108,7 +110,7 @@
 		                    <label for="InputPassword">Senha de acesso</label>
 		                    <div class="input-group"> 
 		                		<span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon glyphicon-lock"></span></span>
-		                        <input type="password" class="form-control" id="password" name="password" placeholder="Senha de acesso" required>
+		                        <input type="password" class="form-control" id="password" name="password" placeholder="Senha de acesso">
 		                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
 		                    </div>
 		                </div>
@@ -118,7 +120,7 @@
 		                    <label for="InputConfirmationPassword">Confirme a Senha de acesso</label>
 		                    <div class="input-group"> 
 		                		<span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon glyphicon-lock"></span></span>
-		                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirme a senha de acesso" required>
+		                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirme a senha de acesso">
 		                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="fa fa-tag" style="color: #428bca"></span></span>
 		                    </div>
 		                </div>
@@ -127,8 +129,8 @@
                 <div class="form-group">
                     <label for="InputMessage">Observações</label>
                     <div class="input-group">
-                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="3" required></textarea>
-                        <span class="input-group-addon" title="Preenchimento Obrigatório"><span class="glyphicon"></span></span>
+                        <textarea name="inputMessage" id="InputMessage" class="form-control" rows="3"></textarea>
+                        <span class="input-group-addon"><span class="glyphicon"></span></span>
                     </div>
                 </div>
                 <input type="submit" id="submit" value="Salvar" class="btn btn-success pull-right">

@@ -73,15 +73,10 @@ public class User {
         super();
     }
 
-    public User(String mobilePhone, String phone, String primaryEmail,
-            String alternativeEmail, boolean typeOfUser,
-            Date birthday, String name,
-            String taxIdentificationNumber, String userName, String password) {
+    public User(String mobilePhone, String primaryEmail, boolean typeOfUser, Date birthday, String name, String taxIdentificationNumber, String userName, String password) {
         super();
         this.mobilePhone = mobilePhone;
-        this.phone = phone;
         this.primaryEmail = primaryEmail;
-        this.alternativeEmail = alternativeEmail;
         this.typeOfUser = typeOfUser;
         this.birthday = birthday;
         this.name = name;

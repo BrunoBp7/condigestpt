@@ -63,4 +63,12 @@ public class UserRepository {
                 .setParameter("id_fraction", id_fraction).getSingleResult();
     }
     
+    public void persist(User user){
+    	em.persist(user);
+    }
+    
+    public void merge(User user) {
+    	em.merge(user);
+	}
+    
 }
