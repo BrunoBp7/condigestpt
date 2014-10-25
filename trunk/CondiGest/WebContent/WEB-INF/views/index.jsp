@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <link href="resources/css/sb-admin-2.css" rel="stylesheet">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="resources/css/customStyle.css" rel="stylesheet">
 
@@ -24,7 +23,6 @@
 <script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery.bootstrap-growl.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript" src="resources/js/customJs.js"></script>
 </head>
 
@@ -38,12 +36,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="content">
+		<div class="content" style="padding-top: 70px">
 			<div class="row" style="width: 100%">
-<!-- 				<div class="col-md-3"> -->
-<%-- 					<%@include file="/WEB-INF/includes/sidemenu.jsp"%> --%>
-<!-- 				</div> -->
-				<div class="col-md-12" style=" padding-left: 0px; padding-right: 0px; padding-top: 15px; ">
+				<div class="col-md-12">
 					<%@include file="/WEB-INF/includes/welcomepage.jsp"%>
 				</div>
 			</div>
