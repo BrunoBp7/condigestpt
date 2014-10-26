@@ -19,7 +19,7 @@ public class UserRepository {
 
     public User findUserById(long id) {
         return (User) em
-                .createQuery("SELECT u FROM USER u WHERE u.id_user = :id")
+                .createQuery("SELECT u FROM User u WHERE u.id_user = :id")
                 .setParameter("id", id).getSingleResult();
     }
     
@@ -54,12 +54,12 @@ public class UserRepository {
     
     @SuppressWarnings("unchecked")
     public List<User> getListOfAllUsers() {
-        return em.createQuery("SELECT * FROM USER").getResultList();
+        return em.createQuery("SELECT u FROM User u").getResultList();
     }
     
     public User findUserByFraction(long id_fraction) {
         return (User) em
-                .createQuery("SELECT u FROM USER u JOIN u.listOfFractions f WHERE f.id_fraction = :id_fraction")
+                .createQuery("SELECT u FROM User u JOIN u.listOfFractions f WHERE f.id_fraction = :id_fraction")
                 .setParameter("id_fraction", id_fraction).getSingleResult();
     }
     

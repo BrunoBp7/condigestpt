@@ -1,27 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+	
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="width:100%; position: fixed;">
 	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse"
-			data-target=".navbar-collapse">
-			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
-			<span class="icon-bar"></span> <span class="icon-bar"></span>
-		</button>
-		<span id="logoid" class="navbar-brand">Condigest v1.0</span>
+		<span id="logoid" class="navbar-brand" style="font-size: 24px;"><a href="main" style="text-decoration: none;">Condigest v1.0</a><span style="font-size: 10px;"> beta</span></span>
 	</div>
 	<!-- /.navbar-header -->
-	<form class="nav navbar-top-links navbar-right" role="search" style="width: 20%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px;">
-       <div class="input-group">
-           <input type="text" class="form-control" placeholder="Pesquisar" style="border-radius: 20px;">
-           <div class="input-group-btn">
-               <button class="btn btn-default" type="submit" style="margin-left: 5px; border-radius: 10px;"><i class="glyphicon glyphicon-search"></i></button>
-           </div>
-       </div>
-   	</form>
-
+<!-- 	<form class="nav navbar-top-links navbar-right" role="search" style="width: 20%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px;"> -->
+<!--        <div class="input-group"> -->
+<!--            <input type="text" class="form-control" placeholder="Pesquisar" style="border-radius: 20px;"> -->
+<!--            <div class="input-group-btn"> -->
+<!--                <button class="btn btn-default" type="submit" style="margin-left: 5px; border-radius: 10px;"><i class="glyphicon glyphicon-search"></i></button> -->
+<!--            </div> -->
+<!--        </div> -->
+<!--    	</form> -->
 
 	<ul class="nav navbar-top-links navbar-right">
+		<li><a href="test">TESTES</a></li>
+	    <li><a href="#">Empresa</a></li>
+	    <li class="menu-item dropdown"><a class="dropdown-toggle" href="#">Serviços</a></li>
+	    <li><a href="registerUser">Clientes</a></li>
+	    <li><a href="#">Orçamentos</a></li>
+	    <li><a href="#">Contatos</a></li>
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
  				<i class="glyphicon glyphicon-envelope"></i>
@@ -185,16 +187,31 @@
 			</ul> <!-- /.dropdown-alerts --></li>
 		<!-- /.dropdown -->
 		<li class="dropdown"><a class="dropdown-toggle"
-			data-toggle="dropdown" href="#"> <i class="glyphicon glyphicon-user"></i>
-				<i class="caret"></i>
+			data-toggle="dropdown" href="#">
+			<c:choose>
+			<c:when test="${user!=null}">
+				<c:out value="${user.userName}"/><i class="caret"></i>
+			</c:when>
+			<c:otherwise>
+			<i class="glyphicon glyphicon-user"></i><i class="caret"></i>
+			</c:otherwise>
+			</c:choose>
 		</a>
 			<ul class="dropdown-menu dropdown-user">
 				<li><a href="#"><i class="glyphicon glyphicon-user"></i> User
 						Profile</a></li>
 				<li><a href="#"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
 				<li class="divider"></li>
-				<li><a id="loginButton" href="#"><i class="glyphicon glyphicon-log-out"></i>
-						Logout/Login</a></li>
+				<li>
+				<c:choose>
+					<c:when test="${user!=null}">
+						<a href="makeLogout"><i class="glyphicon glyphicon-log-out"></i> Sair</a></li>
+					</c:when>
+					<c:otherwise>
+						<a id="loginButton" href="#"><i class="glyphicon glyphicon-log-in"></i> Conectar-se</a></li>
+					</c:otherwise>
+				</c:choose>
+				
 			</ul> <!-- /.dropdown-user --></li>
 		<!-- /.dropdown -->
 	</ul>
