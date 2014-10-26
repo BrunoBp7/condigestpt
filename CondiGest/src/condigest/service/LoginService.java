@@ -14,24 +14,7 @@ public class LoginService {
     @Autowired
     UserRepository userRepo;
 
-    public User identifyUserByNameOrEmailAndPass(String nameOrEmail, String md5Password) {
-        boolean isTheRightPass = false;
-
-        User user = userRepo.findUserByNameOrEmail(nameOrEmail);
-        
-        if (user != null) {
-
-            isTheRightPass = userRepo.isTheRightPassword(user.getId_user(),md5Password);
-
-            if (isTheRightPass) {
-                return user;
-            } else {
-                return null;
-            }
-        } else {
-            return null;
-        }
-    }
+    
     
     
     

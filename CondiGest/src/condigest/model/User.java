@@ -21,184 +21,197 @@ import condigest.model.Meetings;
 @Entity
 public class User {
 
-    @Id
-    @GeneratedValue
-    private long id_user;
+	@Id
+	@GeneratedValue
+	private long id_user;
 
-    @OneToMany(mappedBy = "addressUser")
-    private Set<Address> listOfAddress = new HashSet<Address>();
+	@OneToMany(mappedBy = "addressUser")
+	private Set<Address> listOfAddress = new HashSet<Address>();
 
-    @OneToMany(mappedBy = "fractionOwner")
-    private Set<Fraction> listOfFractions = new HashSet<Fraction>();
+	@OneToMany(mappedBy = "fractionOwner")
+	private Set<Fraction> listOfFractions = new HashSet<Fraction>();
 
-    @OneToMany(mappedBy = "anomaliesUser")
-    private Set<Anomalies> listOfAnomalie = new HashSet<Anomalies>();
+	@OneToMany(mappedBy = "anomaliesUser")
+	private Set<Anomalies> listOfAnomalie = new HashSet<Anomalies>();
 
-    @ManyToOne
-    @JoinColumn(name = "id_meeting", nullable = true)
-    private Meetings userPresent;
+	@ManyToOne
+	@JoinColumn(name = "id_meeting", nullable = true)
+	private Meetings userPresent;
 
-    @Column(nullable = false)
-    private String mobilePhone;
-    
-    @Column(nullable = true)
-    private String phone;
+	@Column(nullable = false)
+	private String mobilePhone;
 
-    @Column(nullable = false)
-    private String primaryEmail;
-    
-    @Column(nullable = true)
-    private String alternativeEmail;
-    
-    @Column(columnDefinition = "BIT", nullable = false)
-    @Type(type = "org.hibernate.type.NumericBooleanType")
-    private boolean typeOfUser;
+	@Column(nullable = true)
+	private String phone;
 
-    @Column(nullable = false)
-    private Date birthday;
-    
-    @Column(nullable = false)
-    private String name;
-    
-    @Column(nullable = false, length = 25)
-    private String taxIdentificationNumber;
-    
-    @Column(nullable = false, length = 25)
-    private String userName;
-    
-    @Column(nullable = false, length = 50)
-    private String password;
+	@Column(nullable = false)
+	private String primaryEmail;
 
-    public User() {
-        super();
-    }
+	@Column(nullable = true)
+	private String alternativeEmail;
 
-    public User(String mobilePhone, String primaryEmail, boolean typeOfUser, Date birthday, String name, String taxIdentificationNumber, String userName, String password) {
-        super();
-        this.mobilePhone = mobilePhone;
-        this.primaryEmail = primaryEmail;
-        this.typeOfUser = typeOfUser;
-        this.birthday = birthday;
-        this.name = name;
-        this.taxIdentificationNumber = taxIdentificationNumber;
-        this.userName = userName;
-        this.password = password;
-    }
+	@Column(columnDefinition = "BIT", nullable = false)
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean typeOfUser;
 
-    public Set<Address> getListOfAddress() {
-        return listOfAddress;
-    }
+	@Column(nullable = false)
+	private Date birthday;
 
-    public void setListOfAddress(Set<Address> listOfAddress) {
-        this.listOfAddress = listOfAddress;
-    }
+	@Column(nullable = false)
+	private String name;
 
-    public Set<Fraction> getListOfFractions() {
-        return listOfFractions;
-    }
+	@Column(nullable = false, length = 25)
+	private String taxIdentificationNumber;
 
-    public void setListOfFractions(Set<Fraction> listOfFractions) {
-        this.listOfFractions = listOfFractions;
-    }
+	@Column(nullable = false, length = 25)
+	private String userName;
 
-    public Set<Anomalies> getListOfAnomalie() {
-        return listOfAnomalie;
-    }
+	@Column(nullable = false, length = 50)
+	private String password;
 
-    public void setListOfAnomalie(Set<Anomalies> listOfAnomalie) {
-        this.listOfAnomalie = listOfAnomalie;
-    }
+	@Column(nullable = true, length = 255)
+	private String notes;
 
-    public Meetings getUserPresent() {
-        return userPresent;
-    }
+	public User() {
+		super();
+	}
 
-    public void setUserPresent(Meetings userPresent) {
-        this.userPresent = userPresent;
-    }
+	public User(String mobilePhone, String primaryEmail, boolean typeOfUser,
+			Date birthday, String name, String taxIdentificationNumber,
+			String userName, String password) {
+		super();
+		this.mobilePhone = mobilePhone;
+		this.primaryEmail = primaryEmail;
+		this.typeOfUser = typeOfUser;
+		this.birthday = birthday;
+		this.name = name;
+		this.taxIdentificationNumber = taxIdentificationNumber;
+		this.userName = userName;
+		this.password = password;
+	}
 
-    public String getMobilePhone() {
-        return mobilePhone;
-    }
+	public Set<Address> getListOfAddress() {
+		return listOfAddress;
+	}
 
-    public void setMobilePhone(String mobilePhone) {
-        this.mobilePhone = mobilePhone;
-    }
+	public void setListOfAddress(Set<Address> listOfAddress) {
+		this.listOfAddress = listOfAddress;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public Set<Fraction> getListOfFractions() {
+		return listOfFractions;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public void setListOfFractions(Set<Fraction> listOfFractions) {
+		this.listOfFractions = listOfFractions;
+	}
 
-    public String getPrimaryEmail() {
-        return primaryEmail;
-    }
+	public Set<Anomalies> getListOfAnomalie() {
+		return listOfAnomalie;
+	}
 
-    public void setPrimaryEmail(String primaryEmail) {
-        this.primaryEmail = primaryEmail;
-    }
+	public void setListOfAnomalie(Set<Anomalies> listOfAnomalie) {
+		this.listOfAnomalie = listOfAnomalie;
+	}
 
-    public String getAlternativeEmail() {
-        return alternativeEmail;
-    }
+	public Meetings getUserPresent() {
+		return userPresent;
+	}
 
-    public void setAlternativeEmail(String alternativeEmail) {
-        this.alternativeEmail = alternativeEmail;
-    }
+	public void setUserPresent(Meetings userPresent) {
+		this.userPresent = userPresent;
+	}
 
-    public Date getBirthday() {
-        return birthday;
-    }
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public String getTaxIdentificationNumber() {
-        return taxIdentificationNumber;
-    }
+	public String getPrimaryEmail() {
+		return primaryEmail;
+	}
 
-    public void setTaxIdentificationNumber(String taxIdentificationNumber) {
-        this.taxIdentificationNumber = taxIdentificationNumber;
-    }
+	public void setPrimaryEmail(String primaryEmail) {
+		this.primaryEmail = primaryEmail;
+	}
 
-    public boolean isTypeOfUser() {
-        return typeOfUser;
-    }
+	public String getAlternativeEmail() {
+		return alternativeEmail;
+	}
 
-    public void setTypeOfUser(boolean typeOfUser) {
-        this.typeOfUser = typeOfUser;
-    }
+	public void setAlternativeEmail(String alternativeEmail) {
+		this.alternativeEmail = alternativeEmail;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public Date getBirthday() {
+		return birthday;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public long getId_user() {
-        return id_user;
-    }
+	public String getTaxIdentificationNumber() {
+		return taxIdentificationNumber;
+	}
+
+	public void setTaxIdentificationNumber(String taxIdentificationNumber) {
+		this.taxIdentificationNumber = taxIdentificationNumber;
+	}
+
+	public boolean isTypeOfUser() {
+		return typeOfUser;
+	}
+
+	public void setTypeOfUser(boolean typeOfUser) {
+		this.typeOfUser = typeOfUser;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public long getId_user() {
+		return id_user;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
 
 }
