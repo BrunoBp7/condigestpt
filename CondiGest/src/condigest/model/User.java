@@ -72,6 +72,12 @@ public class User {
 	@Column(nullable = true, length = 255)
 	private String notes;
 
+	@OneToMany(mappedBy = "messageSender")
+	private Set<Message> listOfSentMessages = new HashSet<Message>();
+
+	@OneToMany(mappedBy = "messageSender")
+	private Set<Message> listOfReceivedMessages = new HashSet<Message>();
+
 	public User() {
 		super();
 	}
@@ -212,6 +218,22 @@ public class User {
 
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+
+	public Set<Message> getListOfSentMessages() {
+		return listOfSentMessages;
+	}
+
+	public void setListOfMessages(Message sentMessage) {
+		listOfSentMessages.add(sentMessage);
+	}
+
+	public Set<Message> getListOfReceivedMessages() {
+		return listOfReceivedMessages;
+	}
+
+	public void setListOfReceivedMessages(Message receivedMessage) {
+		listOfReceivedMessages.add(receivedMessage);
 	}
 
 }

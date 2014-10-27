@@ -103,16 +103,17 @@ public class UserController {
 			user.setNotes(inputMessage);
 		}
 		userRepo.persist(user);
-		User confirm = userRepo.findUserByNameOrEmail(email);
-		if (confirm!=null) {
-			System.out.println("not null");
-			mav.addObject("user", user);
-			return mav;
-		}else {
-			System.out.println("null");
-			mav.addObject("error", "");
-			return mav;
-		}
+//		User confirm = userRepo.findUserByNameOrEmail(email);
+//		if (confirm!=null) {
+//			System.out.println("not null");
+//			mav.addObject("user", user);
+//			return mav;
+//		}else {
+//			System.out.println("null");
+//			mav.addObject("error", "");
+//			return mav;
+//		}
+		return mav;
 	}
 	
 	public static HttpSession session() {
