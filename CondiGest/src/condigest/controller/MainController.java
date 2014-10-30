@@ -24,13 +24,20 @@ public class MainController {
 	@Autowired
 	UserRepository userRepo;
 	
-	@RequestMapping("main")
+	@RequestMapping("/main")
 	public String showMainPage(HttpServletRequest request) {
 		return "index";
 	}
 
 	@RequestMapping("test")
-	public String showTestPage() {
-		return "test";
+	public ModelAndView showTestPage() {
+		ModelAndView mav = new ModelAndView("test");
+		
+		List<User> listOfAllUsers = userRepo.getListOfAllUsers();
+		mav.addObject("listOfAllUsers", listOfAllUsers);
+		for (User user : listOfAllUsers) {
+			System.out.println(user.getName());
+		}
+		return mav;
 	}	
 }

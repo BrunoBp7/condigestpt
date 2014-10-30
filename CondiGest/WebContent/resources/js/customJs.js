@@ -1,10 +1,13 @@
 $(document).ready(function() {
+
 	$("#loginButton").click(function() {
 		$("#loginModal").modal('show');
 	});
 	$("#loginModal").on('show.bs.modal', function() {
 		$(".bigContainer").addClass('blur');
+		$('#inputLoginUsernameOrEmail').focus();
 	});
+	
 	$("#loginModal").on('hide.bs.modal', function() {
 		$(".bigContainer").removeClass('blur');
 	});

@@ -29,21 +29,12 @@
 <script type="text/javascript" src="resources/js/customJs.js"></script>
 <script type="text/javascript" src="resources/dist/js/bootstrapValidator.js"></script>
 <script type="text/javascript"  src="http://bootstrap-growl.remabledesigns.com/js/bootstrap-growl.min.js"></script>
-<script type="text/javascript" src="resources/js/bootstrap-maxlength.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-tooltip.js"></script>
 
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#inputMessage').maxlength({
-		alwaysShow: true,
-        threshold: 10,
-        warningClass: "label label-info",
-        limitReachedClass: "label label-danger",
-        separator: ' caracteres de ',
-        preText: 'Faltam ',
-        postText: ' permitidos.',
-        validate: true
-    });
+	
 });
 
 function errorLogin(){
@@ -69,14 +60,12 @@ function successLogin(name){
 		}
 	});	
 }
-
-
 </script>
 </head>
 
 <body>
 
-	<div class="bigContainer" style="background: linear-gradient(#4F6475, #7390A8); padding: 0px; margin: 0px; width: 100%; overflow-x: hidden;">
+	<div class="bigContainer" style="background-color: #E3EBED; padding: 0px; margin: 0px; width: 100%; overflow-x: hidden;">
 		<div class="header">
 			<div class="row">
 				<div class="col-md-12">
@@ -87,7 +76,19 @@ function successLogin(name){
 		<div class="content" style="padding-top: 8em; padding-bottom: 5em;">
 			<div class="row" style="width: 100%">
 				<div class="col-md-12">
-					<%@include file="/WEB-INF/includes/messageBoard.jsp"%>
+					<%@include file="/WEB-INF/includes/userprofile.jsp"%>
+					<c:if test="${errorMessage!= null}">
+						<script type="text/javascript">
+							errorLogin();
+ 						</script>
+					</c:if>
+					<c:if test="${currentUser!= null}">
+					<input type="hidden" id="userSpan" value="${currentUser.name}"/>
+						<script type="text/javascript">
+						var nome = $('#userSpan').val();
+							successLogin(nome);
+ 						</script>
+					</c:if>				
 				</div>
 			</div>
 		</div>
@@ -97,44 +98,5 @@ function successLogin(name){
 			</div>
 		</div>
 	</div>
-
-	<div id="loginModal" class="modal fade">
-			<div class="modal-dialog" style="width: 350px;">
-				<div class="modal-content"
-					style="background-color: rgba(255, 255, 255, 0.6); border-radius: 20px;">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Login</h4>
-					</div>
-					<div class="modal-body">
-						<form class="form-horizontal" action="makeLogin" method="post" role="form">
-							<div class="form-group">
-								<div class="col-xs-10">
-									<input type="text" class="form-control" name="inputUserOrEmail" placeholder="Nome ou E-mail">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-xs-10">
-									<input type="password" class="form-control" name="inputPassword" placeholder="Senha">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-xs-10">
-									<div class="checkbox">
-										<label><input type="checkbox"> Lembrar de mim</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-xs-10">
-									<button type="submit" class="btn btn-primary">Login</button>									
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
 </body>
 </html>

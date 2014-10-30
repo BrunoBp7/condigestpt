@@ -82,8 +82,8 @@ function successLogin(name){
 							errorLogin();
  						</script>
 					</c:if>
-					<c:if test="${user!= null}">
-					<input type="hidden" id="userSpan" value="${user.name}"/>
+					<c:if test="${currentUser!= null}">
+					<input type="hidden" id="userSpan" value="${currentUser.name}"/>
 						<script type="text/javascript">
 						var nome = $('#userSpan').val();
 							successLogin(nome);
@@ -112,7 +112,7 @@ function successLogin(name){
 						<form class="form-horizontal" action="makeLogin" method="post" role="form">
 							<div class="form-group">
 								<div class="col-xs-10">
-									<input type="text" class="form-control" name="inputUserOrEmail" placeholder="Nome ou E-mail">
+									<input type="text" class="form-control" id="inputLoginUsernameOrEmail" name="inputUserOrEmail" placeholder="Nome ou E-mail">
 								</div>
 							</div>
 							<div class="form-group">

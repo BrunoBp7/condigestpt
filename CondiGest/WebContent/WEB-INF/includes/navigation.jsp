@@ -189,8 +189,8 @@
 		<li class="dropdown"><a class="dropdown-toggle"
 			data-toggle="dropdown" href="#">
 			<c:choose>
-			<c:when test="${user!=null}">
-				<c:out value="${user.userName}"/><i class="caret"></i>
+			<c:when test="${currentUser!=null}">
+				<c:out value="${currentUser.userName}"/><i class="caret"></i>
 			</c:when>
 			<c:otherwise>
 			<i class="glyphicon glyphicon-user"></i><i class="caret"></i>
@@ -198,13 +198,13 @@
 			</c:choose>
 		</a>
 			<ul class="dropdown-menu dropdown-user">
-				<li><a href="#"><i class="glyphicon glyphicon-user"></i> User
+				<li><a href="userProfile"><i class="glyphicon glyphicon-user"></i> User
 						Profile</a></li>
 				<li><a href="#"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
 				<li class="divider"></li>
 				<li>
 				<c:choose>
-					<c:when test="${user!=null}">
+					<c:when test="${currentUser!=null}">
 						<a href="makeLogout"><i class="glyphicon glyphicon-log-out"></i> Sair</a></li>
 					</c:when>
 					<c:otherwise>

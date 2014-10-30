@@ -16,7 +16,8 @@ public class UserRepository {
 
     @PersistenceContext
     EntityManager em;
-
+    
+    
     public User findUserById(long id) {
         return (User) em
                 .createQuery("SELECT u FROM User u WHERE u.id_user = :id")
