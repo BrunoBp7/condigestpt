@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -72,10 +73,10 @@ public class User {
 	@Column(nullable = true, length = 255)
 	private String notes;
 
-	@OneToMany(mappedBy = "messageSender")
+	@OneToMany(mappedBy = "messageSender", fetch=FetchType.EAGER)
 	private Set<Message> listOfSentMessages = new HashSet<Message>();
 
-	@OneToMany(mappedBy = "messageSender")
+	@OneToMany(mappedBy = "messageReceiver", fetch=FetchType.EAGER)
 	private Set<Message> listOfReceivedMessages = new HashSet<Message>();
 
 	public User() {
