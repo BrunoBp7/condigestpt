@@ -2,7 +2,10 @@ package condigest.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.ParseException;
+import java.time.ZonedDateTime;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Set;
 
@@ -20,8 +23,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import condigest.model.Address;
 import condigest.model.Message;
 import condigest.model.User;
+import condigest.repository.AddressRepository;
 import condigest.repository.MessageRepository;
 import condigest.repository.UserRepository;
 import condigest.service.UserService;
@@ -37,7 +42,10 @@ public class UserController {
 	
 	@Autowired
 	MessageRepository msgRepo;
-
+	
+	@Autowired
+	AddressRepository addRepo;
+	
 	@Autowired
 	UserService userServ;
 	
@@ -58,18 +66,6 @@ public class UserController {
 		Set<Message> receivedMessages = user.getListOfReceivedMessages();
 		mav.addObject("allSentMessages", sentMessages);
 		mav.addObject("allReceivedMessages", receivedMessages);
-		
-		for (Message message : receivedMessages) {
-			System.out.println(message.getMessage());
-		}
-		System.out.println("**********");
-		for (Message message2 : sentMessages) {
-			System.out.println(message2.getMessage());
-		}
-
-		
-		System.out.println(sentMessages.size());
-		System.out.println(receivedMessages.size());
 		return mav;
 	}
 	
@@ -87,8 +83,11 @@ public class UserController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		java.util.Date date = new java.util.Date();
+		Timestamp dateTime = new java.sql.Timestamp(date.getTime());
+		System.out.println(date.toString());
 		
-		Message msg = new Message(message, false, userRepo.findUserById(idSender), userRepo.findUserById(idReceiver));
+		Message msg = new Message(message, false, userRepo.findUserById(idSender), userRepo.findUserById(idReceiver), dateTime);
 		msgRepo.persist(msg);
 		
 		return "redirect:main";
@@ -99,7 +98,6 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("registeruser");
 		List<User> listOfUsers = userRepo.getListOfAllUsers();
 		mav.addObject("listOfUsers", listOfUsers);
-
 		return mav;
 	}
 
@@ -108,15 +106,18 @@ public class UserController {
 			@RequestParam(value = "inputUserOrEmail") String userNameOrEmail,
 			@RequestParam(value = "inputPassword") String password,
 			HttpServletRequest request) {
-		System.out.println("merda");
 		ModelAndView mav = new ModelAndView("index");
 
 		User user = userServ.identifyUserByNameOrEmailAndPass(userNameOrEmail,
 				password);
 		if (user != null) {
-			System.out.println(user.getName());
-			// mav.addObject("user", user);
+			Set<Message> sentMessages = user.getListOfSentMessages();
+			Set<Message> receivedMessages = user.getListOfReceivedMessages();
 			request.getSession().setAttribute("currentUser", user);
+			request.getSession().setAttribute("allSentMessages", sentMessages);
+			request.getSession().setAttribute("allReceivedMessages", receivedMessages);
+			request.getSession().setAttribute("loginOk", "loginOk");
+			
 			return mav;
 		} else {
 			System.out.println("user null");
@@ -143,10 +144,15 @@ public class UserController {
 			@RequestParam(value = "nationalIdNumber") String nationalIdNumber,
 			@RequestParam(value = "userName") String userName,
 			@RequestParam(value = "password") String password,
-			@RequestParam(value = "inputMessage", required = false) String inputMessage)
+			@RequestParam(value = "inputMessage", required = false) String inputMessage,
+			@RequestParam(value = "street") String street,
+			@RequestParam(value = "postalCode") String postalCode,
+			@RequestParam(value = "state") String state,
+			@RequestParam(value = "city") String city,
+			@RequestParam(value = "country") String country)
 			throws ParseException {
 
-		// always add the string "cdg" to register one password and also to
+		// To increase the security, we always add the string "cdg" to register one password and also to
 		// check into DB.
 		password = SecurityUtils.md5Encode(password + "cdg");
 		Date birthday = java.sql.Date.valueOf(birthdayField);
@@ -165,16 +171,10 @@ public class UserController {
 			user.setNotes(inputMessage);
 		}
 		userRepo.persist(user);
-		// User confirm = userRepo.findUserByNameOrEmail(email);
-		// if (confirm!=null) {
-		// System.out.println("not null");
-		// mav.addObject("user", user);
-		// return mav;
-		// }else {
-		// System.out.println("null");
-		// mav.addObject("error", "");
-		// return mav;
-		// }
+		Address address = new Address(user, street, city, state, postalCode, country);
+		addRepo.persist(address);
+		user.setListOfAddress(address);
+		userRepo.merge(user);
 		return mav;
 	}
 

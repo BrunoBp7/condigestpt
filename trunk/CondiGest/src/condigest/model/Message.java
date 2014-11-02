@@ -1,5 +1,8 @@
 package condigest.model;
 
+
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +22,9 @@ public class Message {
 	@Column(nullable = false)
 	private String message;
 
+	@Column(nullable = false)
+	private Timestamp date;
+
 	@Column(columnDefinition = "BIT", nullable = false)
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean isReaded = false;
@@ -36,12 +42,13 @@ public class Message {
 	}
 
 	public Message(String message, boolean isReaded, User messageSender,
-			User messageReceiver) {
+			User messageReceiver, Timestamp date) {
 		super();
 		this.message = message;
 		this.isReaded = isReaded;
 		this.messageSender = messageSender;
 		this.messageReceiver = messageReceiver;
+		this.date = date;
 	}
 
 	public String getMessage() {
@@ -74,5 +81,13 @@ public class Message {
 
 	public void setMessageReceiver(User messageReceiver) {
 		this.messageReceiver = messageReceiver;
+	}
+
+	public Timestamp getDate() {
+		return date;
+	}
+
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
 }

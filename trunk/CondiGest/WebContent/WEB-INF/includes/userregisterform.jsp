@@ -10,7 +10,7 @@
 			data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 			<div class="col-lg-12">
 				<div class="well well-sm">
-					<strong style="font-size: 18px">Registo de Utilizador</strong>
+					<strong style="font-size: 18px">Dados do Utilizador</strong>
 					<div style="float: right;">
 						<span class="fa fa-tag" style="color: #428bca"></span><strong>
 							Preenchimento Obrigatório</strong>
@@ -52,7 +52,8 @@
 							<label for="InputEmail" class="control-label">Email</label>
 							<div class="input-group">
 								<span class="input-group-addon"
-									title="Preenchimento Obrigatório">@</span> <input type="email"
+									title="Preenchimento Obrigatório"><i
+									class="glyphicon glyphicon-envelope"></i></span> <input type="email"
 									class="form-control" id="email" name="email"
 									placeholder="Email" required
 									data-bv-notempty-message="Preenchimento obrigatório"
@@ -102,8 +103,8 @@
 							<div class="input-group">
 								<span class="input-group-addon"
 									title="Preenchimento Obrigatório"><span
-									class="glyphicon glyphicon-earphone"></span></span> <input
-									type="text" class="form-control" id="alternativeTelephone"
+									class="glyphicon glyphicon-earphone"></span></span> <input type="text"
+									class="form-control" id="alternativeTelephone"
 									name="alternativeTelephone" placeholder="Contacto Alternativo"
 									data-bv-integer="true"
 									data-bv-integer-message="Apenas são permitos algarismos" /> <span
@@ -192,7 +193,7 @@
 									data-bv-identical-field="passwordConfirmation"
 									data-bv-identical-message="Deve reescrever a mesma senha no campo de confirmação de senha"
 									data-bv-different="true" data-bv-different-field="userName"
-									data-bv-different-message="O nome de utilizador não pode ser o mesmo da sua senah de acesso">
+									data-bv-different-message="O nome de utilizador não pode ser o mesmo da sua senha de acesso">
 								<span class="input-group-addon"
 									title="Preenchimento Obrigatório"><span
 									class="fa fa-tag" style="color: #428bca"></span></span>
@@ -208,9 +209,8 @@
 									title="Preenchimento Obrigatório"><span
 									class="fa fa-key fa-fw"></span></span> <input type="password"
 									class="form-control" id="passwordConfirmation"
-									name="passwordConfirmation"
-									placeholder="Confirme a senha" required
-									data-bv-notempty-message="Preenchimento obrigatório"
+									name="passwordConfirmation" placeholder="Confirme a senha"
+									required data-bv-notempty-message="Preenchimento obrigatório"
 									data-bv-identical="true" data-bv-identical-field="password"
 									data-bv-identical-message="Confirme a mesma senha"
 									data-bv-different="true" data-bv-different-field="userName"
@@ -222,12 +222,105 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="InputMessage" class="control-label">Observações</label>
-					<div class="input-group">
-						<textarea name="inputMessage" id="InputMessage"
-							class="form-control" rows="3"></textarea>
-						<span class="input-group-addon"><span class="glyphicon"></span></span>
+				<div class="row">
+					<div class="form-group">
+						<label for="InputMessage" class="control-label">Observações</label>
+						<div class="input-group">
+							<textarea name="inputMessage" id="InputMessage"
+								class="form-control" rows="3"></textarea>
+							<span class="input-group-addon"><span class="glyphicon"></span></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+						<div class="well well-sm">
+							<strong style="font-size: 18px">Dados da morada</strong>
+							<div style="float: right;">
+								<span class="fa fa-tag" style="color: #428bca"></span><strong>
+									Preenchimento Obrigatório</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-7">
+						<div class="form-group">
+							<label for="inputStreet" class="control-label">Endereço</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-home fa-lg"></i></span> <input type="text"
+									class="form-control" id="street" name="street"
+									placeholder="Endereço" required
+									data-bv-notempty-message="Preenchimento obrigatório"> <span
+									class="input-group-addon" title="Preenchimento Obrigatório"><span
+									class="fa fa-tag" style="color: #428bca"></span></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="form-group">
+							<label for="postalCode" class="control-label">C. Postal</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-home fa-lg"></i></span> <input type="text"
+									class="form-control" id="postalCode" maxlength="8"
+									name="postalCode" placeholder="C.Postal" required
+									data-bv-notempty-message="Preenchimento obrigatório"> <span
+									class="input-group-addon" title="Preenchimento Obrigatório"><span
+									class="fa fa-tag" style="color: #428bca"></span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="inputState" class="control-label">Localidade</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-flag fa-lg"></i></span> <input type="text"
+									class="form-control" id="state" name="state"
+									placeholder="Localidade" required data-bv-regexp="true"
+									data-bv-regexp-regexp="^[a-z\s\íãçõéã]+$"
+									data-bv-regexp-message="Apenas são permitidos caracteres alfabéticos e espaços."
+									data-bv-notempty-message="Preenchimento obrigatório"> <span
+									class="input-group-addon" title="Preenchimento Obrigatório"><span
+									class="fa fa-tag" style="color: #428bca"></span></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="inputCity" class="control-label">Cidade</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-flag fa-lg"></i></span> <input type="text"
+									class="form-control" id="city" name="city"
+									placeholder="Cidade" required data-bv-regexp="true"
+									data-bv-regexp-regexp="^[a-z\s\íãçõéã]+$"
+									data-bv-regexp-message="Apenas são permitidos caracteres alfabéticos e espaços."
+									data-bv-notempty-message="Preenchimento obrigatório"> <span
+									class="input-group-addon" title="Preenchimento Obrigatório"><span
+									class="fa fa-tag" style="color: #428bca"></span></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="inputCountry" class="control-label">País</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-flag fa-lg"></i></span> <input type="text"
+									class="form-control" id="country" name="country"
+									placeholder="País" required data-bv-regexp="true"
+									data-bv-regexp-regexp="^[a-z\s\íãçõéã]+$"
+									data-bv-regexp-message="Apenas são permitidos caracteres alfabéticos e espaços."
+									data-bv-notempty-message="Preenchimento obrigatório"> <span
+									class="input-group-addon" title="Preenchimento Obrigatório"><span
+									class="fa fa-tag" style="color: #428bca"></span></span>
+							</div>
+						</div>
 					</div>
 				</div>
 				<input type="submit" value="Registar"

@@ -24,18 +24,16 @@
 							<div class="col-md-10">
 								<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon" style="color: black;"><label>De:</label></span>
-										<select class="form-control" name="idSender">
-											<option value="${currentUser.id_user}">
-												<c:choose>
-													<c:when test="${currentUser!=null}">
-														<c:out value="${currentUser.name}" />
-													</c:when>
-													<c:otherwise>currentUser null
+										<label><strong>De: </strong></label>
+										<c:choose>
+											<c:when test="${currentUser!=null}">
+												<input type="hidden" class="form-control" name="idSender"
+													value="${currentUser.id_user}">
+												<c:out value="${currentUser.name}" />
+											</c:when>
+											<c:otherwise>currentUser null
 												</c:otherwise>
-												</c:choose>
-											</option>
-										</select>
+										</c:choose>
 									</div>
 								</div>
 							</div>
@@ -46,11 +44,11 @@
 							<div class="col-md-10">
 								<div class="form-group">
 									<div class="input-group">
-										<span class="input-group-addon" style="color: black;"><label>Para:</label></span>
-										<select class="form-control" name="idReceiver">
-											<c:choose>
-												<%-- if the currentUser is administrator --%>
-												<c:when test="${currentUser.typeOfUser == true}">
+										<label><strong>Para: </strong></label>
+										<c:choose>
+											<%-- if the currentUser is administrator --%>
+											<c:when test="${currentUser.typeOfUser == true}">
+												<select class="form-control" name="idReceiver">
 													<c:forEach items="${listOfAllUsers}" var="user">
 														<c:if test="${user.typeOfUser != true}">
 															<option value="${user.id_user}">
@@ -58,20 +56,18 @@
 															</option>
 														</c:if>
 													</c:forEach>
-												</c:when>
-												<c:otherwise>
-													<option value="1">
-														<c:forEach items="${listOfAllUsers}" var="user">
-															<c:if test="${user.typeOfUser == true}">
-																<option value="${user.id_user}">
-																	<c:out value="${user.name}" />
-																</option>
-															</c:if>
-														</c:forEach>
-													</option>
-												</c:otherwise>
-											</c:choose>
-										</select>
+												</select>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${listOfAllUsers}" var="user">
+													<c:if test="${user.typeOfUser == true}">
+														<input type="hidden" class="form-control" name="idReceiver"
+															value="${user.id_user}">
+														<c:out value="${user.name}" />
+													</c:if>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</div>
