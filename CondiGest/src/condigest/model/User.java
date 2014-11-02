@@ -26,7 +26,7 @@ public class User {
 	@GeneratedValue
 	private long id_user;
 
-	@OneToMany(mappedBy = "addressUser")
+	@OneToMany(mappedBy = "addressUser", fetch=FetchType.EAGER)
 	private Set<Address> listOfAddress = new HashSet<Address>();
 
 	@OneToMany(mappedBy = "fractionOwner")
@@ -101,24 +101,24 @@ public class User {
 		return listOfAddress;
 	}
 
-	public void setListOfAddress(Set<Address> listOfAddress) {
-		this.listOfAddress = listOfAddress;
+	public void setListOfAddress(Address address) {
+		listOfAddress.add(address);
 	}
 
 	public Set<Fraction> getListOfFractions() {
 		return listOfFractions;
 	}
 
-	public void setListOfFractions(Set<Fraction> listOfFractions) {
-		this.listOfFractions = listOfFractions;
+	public void setListOfFractions(Fraction fraction) {
+		listOfFractions.add(fraction);
 	}
 
 	public Set<Anomalies> getListOfAnomalie() {
 		return listOfAnomalie;
 	}
 
-	public void setListOfAnomalie(Set<Anomalies> listOfAnomalie) {
-		this.listOfAnomalie = listOfAnomalie;
+	public void setListOfAnomalie(Anomalies anomalie) {
+		listOfAnomalie.add(anomalie);
 	}
 
 	public Meetings getUserPresent() {

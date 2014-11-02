@@ -38,6 +38,10 @@ $(document).ready(function() {
 function errorLogin(){
 	$.growl("Nome de Utilizador ou senha de acesso errado!", {
 		type: "danger",
+		placement: {
+			from: "top",
+			align: "center"
+		},
 		allow_dismiss: false,
 		delay: 2500,
 		animate: {
@@ -49,12 +53,16 @@ function errorLogin(){
 
 function successLogin(name){
 	$.growl("Bem-vindo " + name + "!", {
-		type: "success",
+		placement: {
+			from: "top",
+			align: "center"
+		},
+		type: "info",
 		allow_dismiss: false,
 		delay: 2500,
 		animate: {
-			enter: 'animated bounceIn',
-			exit: 'animated bounceOut'
+			enter: 'animated bounceInDown',
+			exit: 'animated bounceOutUp'
 		}
 	});	
 }
@@ -82,12 +90,13 @@ function successLogin(name){
 							errorLogin();
  						</script>
 					</c:if>
-					<c:if test="${currentUser!= null}">
+					<c:if test="${(currentUser!= null) && (loginOk!=null)}">
 					<input type="hidden" id="userSpan" value="${currentUser.name}"/>
 						<script type="text/javascript">
 						var nome = $('#userSpan').val();
 							successLogin(nome);
  						</script>
+ 						<c:remove var="loginOk" scope="session"/>
 					</c:if>				
 				</div>
 			</div>
