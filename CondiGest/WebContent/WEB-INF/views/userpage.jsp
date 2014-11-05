@@ -46,7 +46,34 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-	
+		$('#generalInfoId').click(function() {
+			$.ajax({
+				url : "ajax/includeProfilePage",
+				dataType : "html",
+				type : "POST",
+				success : function(data) {
+					$('#divToInclude').empty();
+					$(data).appendTo('#divToInclude');
+				},
+				error : function(data) {
+					alert("error contacting the server");
+				}
+			});
+		});
+		$('#messagesBoardId').click(function() {
+			$.ajax({
+				url : "ajax/includeMessagesBoardPage",
+				dataType : "html",
+				type : "POST",
+				success : function(data) {
+					$('#divToInclude').empty();
+					$(data).appendTo('#divToInclude');
+				},
+				error : function(data) {
+					alert("error contacting the server");
+				}
+			});
+		});
 	});
 
 	function errorLogin() {
@@ -85,12 +112,13 @@
 
 <body>
 
+
 	<div class="bigContainer"
 		style="background-color: #E3EBED; padding: 0px; margin: 0px; width: 100%; overflow-x: hidden;">
 		<div class="header">
 			<div class="row">
 				<div class="col-md-12">
-					<jsp:include page="/WEB-INF/includes/navigation.jsp"/>
+					<jsp:include page="/WEB-INF/includes/navigation.jsp" />
 				</div>
 			</div>
 		</div>
@@ -126,41 +154,23 @@
 													<div class="row">
 														<label><strong>User</strong></label>
 													</div>
-								<div class="row">
-									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default active">
-										<input type="radio" name="radioButtons" id="generalInfoId" checked>Geral
-										</label>
-										<label class="btn btn-default">
-										<input type="radio" name="radioButtons" id="messagesBoardId">Mensagens
-										<span class="badge progress-bar-danger">
-												<c:out value="${fn:length(allSentMessages)}" />
-										</span>
-										</label>
-										<label class="btn btn-default">
-										<input type="radio" name="radioButtons" id="otheonsId">Outra opção
-										</label>
-									</div>
-<%-- 									<a style="float: right;" href="getAllMessages?id=${currentUser.id_user}">Inbox --%>
-<!-- 										<span class="badge"></span> -->
-<!-- 									</a> -->
-									
-									
-<%-- 									<c:if test="${allSentMessages!=null}"> --%>
-<%-- 										<c:forEach items="${allSentMessages}" var="message"> --%>
-<%-- 											<c:out value="${message.message}" /> --%>
-<!-- 											<br> -->
-<%-- 										</c:forEach> --%>
-<%-- 									</c:if> --%>
-<%-- 									<c:if test="${fn:length(allSentMessages) > 0}"> --%>
-<%-- 										<span class="badge"> <c:out --%>
-<%-- 												value="${fn:length(allSentMessages)}" /> --%>
-<!-- 										</span> -->
-<%-- 									</c:if> --%>
-
-								</div>
-
-
+													<div class="row">
+														<div class="btn-group" data-toggle="buttons">
+															<label class="btn btn-custom btn-sm active"
+																id="generalInfoId"> <input type="radio"
+																name="radioButtons" checked>Geral
+															</label> <label class="btn btn-custom btn-sm"
+																id="messagesBoardId"> <input type="radio"
+																name="radioButtons">Mensagens <span
+																class="badge progress-bar-danger"> <c:out
+																		value="${fn:length(allSentMessages)}" />
+															</span>
+															</label> <label class="btn btn-custom btn-sm" id="othersId"> <input
+																type="radio" name="radioButtons">Outra
+																opção
+															</label>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -173,7 +183,7 @@
 					</div>
 
 					<div class="container" id="divToInclude">
-						<jsp:include page="/WEB-INF/includes/userprofile.jsp"/>
+						<%-- 						<jsp:include page="/WEB-INF/views/userprofile.jsp" /> --%>
 					</div>
 					<c:if test="${errorMessage!= null}">
 						<script type="text/javascript">

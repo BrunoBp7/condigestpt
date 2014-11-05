@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
@@ -28,7 +27,7 @@
 			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"> <i class="fa fa-envelope fa-lg"></i>
 					<i class="badge progress-bar-danger"> <c:out
-							value="${fn:length(allSentMessages)}" /></i>
+							value="${fn:length(allReceivedMessages)}" /></i>
 			</a>
 				<ul class="dropdown-menu dropdown-messages">
 					<c:forEach items="${allReceivedMessages}" var="message">
@@ -37,8 +36,6 @@
 										<strong><c:out value="${message.messageSender.name}" /></strong>
 										<span class="pull-right text-muted">
 										<em><c:out value='${message.date}'/></em>
-										
-<%-- 									<em><fmt:formatDate value='${message.date}' pattern='yy-MMM-dd' /></em>  --%>
 										</span>
 									</div>
 									<div style="word-wrap: break-word;">
