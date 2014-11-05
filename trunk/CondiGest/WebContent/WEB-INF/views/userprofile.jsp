@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
@@ -15,7 +13,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<h3>
-						<label>InformaÃ§Ã£o de contacto</label>
+						<label>Informação de contacto</label>
 					</h3>
 
 				</div>
@@ -55,7 +53,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<h3>
-						<label>InformaÃ§Ã£o Geral</label>
+						<label>Informação Geral</label>
 					</h3>
 				</div>
 			</div>
@@ -77,7 +75,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-5">
-					<label>Numero de identificaÃ§Ã£o</label>
+					<label>Numero de identificação</label>
 				</div>
 				<div class="col-sm-7">
 					<c:out value="${currentUser.taxIdentificationNumber}" />
@@ -93,7 +91,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-5">
-					<label>PermissÃµes</label>
+					<label>Permissões</label>
 				</div>
 				<div class="col-sm-7">
 					<c:choose>
@@ -111,7 +109,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<h3>
-						<label>Outras InformaÃ§Ãµes</label>
+						<label>Outras Informações</label>
 					</h3>
 				</div>
 			</div>
@@ -135,7 +133,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<h3>
-						<label>OpÃ§Ãµes</label>
+						<label>Opções</label>
 					</h3>
 				</div>
 			</div>

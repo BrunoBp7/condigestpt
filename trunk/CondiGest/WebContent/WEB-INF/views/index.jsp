@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <%@ page session="true"%>
 
 
 
 <html>
 <head>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<!-- <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" /> -->
 <title>CondiGest, gestão de condomínios</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 

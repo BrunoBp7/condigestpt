@@ -87,7 +87,7 @@ function successLogin(name){
 		<div class="content" style="padding-top: 8em; padding-bottom: 5em;">
 			<div class="row" style="width: 100%">
 				<div class="col-md-12">
-					<%@include file="/WEB-INF/includes/messageBoard.jsp"%>
+					<%@include file="/WEB-INF/views/sendmessageboard.jsp"%>
 				</div>
 			</div>
 		</div>

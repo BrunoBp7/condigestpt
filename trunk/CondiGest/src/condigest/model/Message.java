@@ -1,6 +1,5 @@
 package condigest.model;
 
-
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -23,11 +22,18 @@ public class Message {
 	private String message;
 
 	@Column(nullable = false)
+	private String subject;
+
+	@Column(nullable = false)
 	private Timestamp date;
 
 	@Column(columnDefinition = "BIT", nullable = false)
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean isReaded = false;
+
+	@Column(columnDefinition = "BIT", nullable = false)
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean isDeleted = false;
 
 	@ManyToOne
 	@JoinColumn(name = "id_userSender")
@@ -41,14 +47,15 @@ public class Message {
 		super();
 	}
 
-	public Message(String message, boolean isReaded, User messageSender,
-			User messageReceiver, Timestamp date) {
+	public Message(String message, String subject, Timestamp date,
+			boolean isReaded, User messageSender, User messageReceiver) {
 		super();
 		this.message = message;
+		this.subject = subject;
+		this.date = date;
 		this.isReaded = isReaded;
 		this.messageSender = messageSender;
 		this.messageReceiver = messageReceiver;
-		this.date = date;
 	}
 
 	public String getMessage() {
@@ -59,12 +66,28 @@ public class Message {
 		this.message = message;
 	}
 
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
 	public boolean isReaded() {
 		return isReaded;
 	}
 
 	public void setReaded(boolean isReaded) {
 		this.isReaded = isReaded;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 	public User getMessageSender() {
